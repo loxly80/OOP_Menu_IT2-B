@@ -1,38 +1,38 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using OOP_Menu_IT2_B;
 
-//Console.CursorVisible = false;
-//Console.ForegroundColor = ConsoleColor.Green;
-//Console.WriteLine("╔════════════════════╗");
-//Console.WriteLine("║                    ║");
-//Console.WriteLine("╠════════════════════╣");
-//Console.WriteLine("║                    ║");
-//Console.WriteLine("║                    ║");
-//Console.WriteLine("║                    ║");
-//Console.WriteLine("╚════════════════════╝");
-//Console.ForegroundColor = ConsoleColor.White;
-//Console.SetCursorPosition(6,1);
-//Console.Write("SUPER MENU");
-//Console.SetCursorPosition(6, 3);
-//Console.Write("Položka 1");
-//Console.BackgroundColor = ConsoleColor.Yellow;
-//Console.ForegroundColor = ConsoleColor.Black;
-//Console.SetCursorPosition(1, 4);
-//Console.Write("                    ");
-//Console.SetCursorPosition(6, 4);
-//Console.Write("Položka 2");
-//Console.BackgroundColor = ConsoleColor.Black;
-//Console.ForegroundColor = ConsoleColor.White;
-
-//Console.SetCursorPosition(6, 5);
-//Console.Write("Položka 3");
-
-using OOP_Menu_IT2_B;
+bool konec = false;
 Console.CursorVisible = false;
 
 Menu menu = new Menu();
+menu.BarvaOkraj = ConsoleColor.Red;
+menu.BarvaPozadi = ConsoleColor.White;
+menu.BarvaText = ConsoleColor.Black;
+menu.BarvaKurzor = ConsoleColor.Blue;
+menu.BarvaTextKurzor = ConsoleColor.White;
 menu.Nadpis = "Moje MENU";
-menu.Zobraz();
-menu.Polozky = new string[5];
-menu.Zobraz();
+menu.Polozky = new string[6];
+for(int i = 0; i < menu.Polozky.Length; i++)
+{
+  menu.Polozky[i] = $"Položka {i + 1}";
+}
+menu.VybranaPolozka = 0;
 
-Console.ReadKey();
+do
+{
+  Console.BackgroundColor = ConsoleColor.Black;
+  Console.Clear();
+  menu.Zobraz();
+  var klavesa = Console.ReadKey();
+  if(klavesa.Key == ConsoleKey.UpArrow)
+  {
+    menu.Nahoru();    
+  }
+  else if(klavesa.Key == ConsoleKey.DownArrow)
+  {
+    menu.Dolu();    
+  }
+  else if(klavesa.Key == ConsoleKey.Escape)
+  {
+    konec = true;
+  }
+}while(!konec);
