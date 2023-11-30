@@ -80,7 +80,7 @@ namespace OOP_Menu_IT2_B
     {
       Console.BackgroundColor = BarvaPozadi;
       Console.ForegroundColor = BarvaText;
-      Console.SetCursorPosition(3, 1);
+      Console.SetCursorPosition(X + 3, Y + 1);
       Console.Write(Nadpis);
     }
 
