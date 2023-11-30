@@ -51,7 +51,7 @@ namespace OOP_Menu_IT2_B
       if (VybranaPolozka >= 0)
       {
         Console.BackgroundColor = BarvaKurzor;
-        Console.SetCursorPosition(1, 3 + VybranaPolozka);
+        Console.SetCursorPosition(X + 1, Y + 3 + VybranaPolozka);
         Console.Write(new String(' ', Sirka));
       }
     }
@@ -71,7 +71,7 @@ namespace OOP_Menu_IT2_B
           Console.BackgroundColor = BarvaPozadi;
           Console.ForegroundColor = BarvaText;
         }
-        Console.SetCursorPosition(3, 3 + i);
+        Console.SetCursorPosition(X + 3, Y + 3 + i);
         Console.Write(Polozky[i]);
       }
     }
