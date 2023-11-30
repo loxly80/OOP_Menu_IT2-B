@@ -4,6 +4,8 @@ bool konec = false;
 Console.CursorVisible = false;
 
 Menu menu = new Menu();
+menu.X = 10;
+menu.Y = 5;
 menu.BarvaOkraj = ConsoleColor.Red;
 menu.BarvaPozadi = ConsoleColor.White;
 menu.BarvaText = ConsoleColor.Black;

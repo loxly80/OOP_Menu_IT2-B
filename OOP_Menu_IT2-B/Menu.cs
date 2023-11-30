@@ -17,6 +17,8 @@ namespace OOP_Menu_IT2_B
     public int Sirka = 25;
     public string[] Polozky = new string[0];
     public int VybranaPolozka = -1;
+    public int X = 0;
+    public int Y = 0;
 
     public void Zobraz()
     {
@@ -29,7 +31,7 @@ namespace OOP_Menu_IT2_B
     public void Nahoru()
     {
       VybranaPolozka--;
-      if (VybranaPolozka <= 0)
+      if (VybranaPolozka < 0)
       {
         VybranaPolozka = Polozky.Length - 1;
       }
@@ -86,24 +88,29 @@ namespace OOP_Menu_IT2_B
     {
       Console.BackgroundColor = BarvaPozadi;
       Console.ForegroundColor = BarvaOkraj;
-      Console.Write("╔");
-      Console.Write(new String('═', Sirka));
-      Console.WriteLine("╗");
-      Console.Write("║");
-      Console.Write(new String(' ', Sirka));
-      Console.WriteLine("║");
-      Console.Write("╠");
-      Console.Write(new String('═', Sirka));
-      Console.WriteLine("╣");
+      ZobrazRadek('╔', '═', '╗', X, Y);
+      ZobrazRadek('║', ' ', '║', X, Y + 1);
+      ZobrazRadek('╠', '═', '╣', X, Y + 2);
       for (int i = 0; i < Polozky.Length; i++)
       {
-        Console.Write("║");
-        Console.Write(new String(' ', Sirka));
-        Console.WriteLine("║");
+        ZobrazRadek('║', ' ', '║', X, Y + 3 + i);
       }
-      Console.Write("╚");
-      Console.Write(new String('═', Sirka));
-      Console.WriteLine("╝");
+      ZobrazRadek('╚', '═', '╝', X, Y + 3 + Polozky.Length);
+    }
+
+    private void ZobrazRadek(char levy, char stred, char pravy)
+    {
+      Console.Write(levy);
+      Console.Write(new String(stred, Sirka));
+      Console.WriteLine(pravy);
+    }
+
+    private void ZobrazRadek(char levy, char stred, char pravy, int x, int y)
+    {
+      Console.SetCursorPosition(x, y);
+      Console.Write(levy);
+      Console.Write(new String(stred, Sirka));
+      Console.Write(pravy);
     }
   }
 }
